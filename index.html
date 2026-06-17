@@ -3,50 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>პროექტის სახელი</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="რეცეპტების სამყარო — მოძებნე რეცეპტები, დაათვალიერე კატეგორიები და შეინახე ფავორიტები">
+  <title>რეცეპტების სამყარო</title>
 </head>
 <body>
+  <header class="site-header">
+    <nav class="nav" aria-label="მთავარი ნავიგაცია">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/icons/logo.svg" alt="რეცეპტების სამყაროს ლოგო" class="nav__logo-img">
+        <span>რეცეპტების სამყარო</span>
+      </a>
 
-  <header>
-    <nav>
-      <span class="nav__logo">პროექტის სახელი</span>
-      <div class="nav__links">
-        <a href="index.html">ძიება</a>
-        <a href="saved.html">შენახული</a>
-      </div>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html" class="nav__link nav__link--active" aria-current="page">ძიება</a></li>
+        <li><a href="saved.html" class="nav__link">ფავორიტები <span id="saved-count-badge" class="nav__badge">0</span></a></li>
+        <li><a href="suggest.html" class="nav__link">რეცეპტის შეთავაზება</a></li>
+      </ul>
+
       <div class="nav__actions">
-        <span id="nav-user"></span>
-        <button id="logout-btn" type="button">გასვლა</button>
+        <span id="nav-user" class="nav__user"></span>
+        <button id="logout-btn" class="nav__logout" type="button">გასვლა</button>
       </div>
     </nav>
   </header>
 
   <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="hero__eyebrow">მსოფლიოს სამზარეულო</p>
+      <h1 id="hero-title" class="hero__title">იპოვე შენი საყვარელი რეცეპტი</h1>
+      <p class="hero__subtitle">მოძებნე კერძები სახელით, დაათვალიერე კატეგორიები და შეინახე საუკეთესო რეცეპტები ფავორიტებში.</p>
 
-    <!-- საძიებო / ფილტრის ფორმა -->
-    <section>
-      <form id="search-form">
-        <!-- დაამატე input ველები აქ (სულ მცირე 3 განსხვავებული ტიპი) -->
-        <button type="submit">ძიება</button>
+      <form id="search-form" class="search-form" novalidate>
+        <div class="search-form__row">
+          <label for="search-input" class="visually-hidden">რეცეპტის ძიება</label>
+          <input id="search-input" class="search-form__input" type="search" name="query" placeholder="მაგ. chicken, pasta, beef..." minlength="2" autocomplete="off" required>
+          <button class="search-form__btn" type="submit">ძიება</button>
+        </div>
+        <p id="search-error" class="form-feedback" role="alert" aria-live="polite"></p>
       </form>
     </section>
 
-    <!-- ჩატვირთვის და შეცდომის მდგომარეობები -->
-    <p id="loading-msg" hidden>იტვირთება…</p>
-    <p id="error-msg" hidden></p>
-
-    <!-- დინამიურად შექმნილი ბარათები აქ განთავსდება -->
-    <section>
-      <div id="results-grid"></div>
+    <section class="category-section" aria-labelledby="category-title">
+      <h2 id="category-title" class="section-title">კატეგორიები</h2>
+      <div id="category-filter" class="category-filter" role="group" aria-label="კატეგორიების ფილტრი"></div>
     </section>
 
+    <p id="loading-msg" class="state-msg" hidden>იტვირთება…</p>
+    <p id="error-msg" class="state-msg state-msg--error" hidden></p>
+
+    <section class="results-section" aria-labelledby="results-title">
+      <h2 id="results-title" class="section-title">რეცეპტები</h2>
+      <div id="results-grid" class="cards-grid" aria-live="polite"></div>
+    </section>
   </main>
 
-  <footer>
-    <!-- footer-ის შიგთავსი -->
+  <footer class="site-footer">
+    <p>✨ რეცეპტები მოწოდებულია TheMealDB API-დან — Web Engineering Final Project 2026</p>
   </footer>
-
-  <script type="module" src="js/main.js"></script>
 </body>
 </html>

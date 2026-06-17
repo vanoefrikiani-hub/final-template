@@ -1,25 +1,10 @@
-// უკვე ავტორიზებული მომხმარებელი — მთავარ გვერდზე გადამისამართება
-if (localStorage.getItem('user')) {
-  window.location.href = 'index.html';
-}
+const loginForm = document.getElementById('login-form');
 
-document.getElementById('login-form').addEventListener('submit', (e) => {
+loginForm.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const name = document.getElementById('name-input').value.trim();
-  const errorEl = document.getElementById('login-error');
-
-  if (!name) {
-    errorEl.textContent = 'გთხოვთ შეიყვანოთ სახელი.';
-    errorEl.hidden = false;
-    return;
-  }
-
-  errorEl.hidden = true;
-
-  // მომხმარებლის სახელი ინახება localStorage-ში, სეტდება სესიური cookie
-  localStorage.setItem('user', name);
-  document.cookie = 'authorized=true; path=/';
+  const email = document.getElementById('email').value;
+  localStorage.setItem('user', email);
 
   window.location.href = 'index.html';
 });
