@@ -3,39 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>შენახული — პროექტის სახელი</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>ფავორიტები</title>
 </head>
 <body>
 
   <header>
     <nav>
-      <span class="nav__logo">პროექტის სახელი</span>
-      <div class="nav__links">
-        <a href="index.html">ძიება</a>
-        <a href="saved.html">შენახული</a>
-      </div>
-      <div class="nav__actions">
-        <span id="nav-user"></span>
-        <button id="logout-btn" type="button">გასვლა</button>
-      </div>
+      <ul>
+        <li><a href="index.html">მთავარი</a></li>
+        <li><a href="saved.html">ფავორიტები</a></li>
+        <li><a href="detail.html">დეტალები</a></li>
+        <li><a href="suggest.html">შეთავაზება</a></li>
+        <li><a href="login.html">შესვლა</a></li>
+      </ul>
     </nav>
   </header>
 
   <main>
-
     <section>
-      <h2>შენახული ელემენტები</h2>
-      <p id="saved-empty" hidden>ჯერ არაფერია შენახული.</p>
-      <div id="saved-grid"></div>
+      <h1>ფავორიტები</h1>
+      <p>აქ გამოჩნდება თქვენს მიერ შენახული და რჩეული რეცეპტები.</p>
     </section>
 
+    <!-- ადგილი, სადაც მომავალში დინამიურად გამოჩნდება შენახული რეცეპტები -->
+    <section>
+      <div id="saved-results-grid">
+        <!-- შენახული რეცეპტების ბარათები ჩაიტვირთება აქ -->
+      </div>
+    </section>
   </main>
 
   <footer>
-    <!-- footer-ის შიგთავსი -->
+    <p>✨ რეცეპტები მოწოდებულია TheMealDB API-დან — Web Engineering Final Project 2026</p>
   </footer>
 
-  <script type="module" src="js/saved.js"></script>
 </body>
 </html>

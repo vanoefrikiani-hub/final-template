@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>რეცეპტის შეთავაზება</title>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">მთავარი</a></li>
+        <li><a href="saved.html">ფავორიტები</a></li>
+        <li><a href="detail.html">დეტალები</a></li>
+        <li><a href="suggest.html">შეთავაზება</a></li>
+        <li><a href="login.html">შესვლა</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h1>შესთავაზე ახალი რეცეპტი</h1>
+      <p>გაგვიზიარეთ თქვენი საყვარელი კერძის რეცეპტი და ჩვენ მას განვიხილავთ.</p>
+
+      <form action="#" method="post">
+        <!-- ველის ტიპი 1: text (ვალიდაციით: required, minlength="3") -->
+        <div>
+          <label for="recipe-title">კერძის დასახელება:</label>
+          <input type="text" id="recipe-title" name="title" minlength="3" required>
+        </div>
+
+        <!-- ველის ტიპი 2: email (ვალიდაციით: required, type="email") -->
+        <div>
+          <label for="author-email">თქვენი ელ-ფოსტა:</label>
+          <input type="email" id="author-email" name="email" required>
+        </div>
+
+        <!-- ველის ტიპი 3: select (კატეგორია) -->
+        <div>
+          <label for="recipe-category">კატეგორია:</label>
+          <select id="recipe-category" name="category" required>
+            <option value="">აირჩიეთ კატეგორია</option>
+            <option value="breakfast">საუზმე</option>
+            <option value="lunch">სადილი</option>
+            <option value="dinner">ვახშამი</option>
+            <option value="dessert">დესერტი</option>
+          </select>
+        </div>
+
+        <!-- ველის ტიპი 4: radio (სირთულე) -->
+        <div>
+          <span>მომზადების სირთულე:</span>
+          <label>
+            <input type="radio" name="difficulty" value="easy" checked> მარტივი
+          </label>
+          <label>
+            <input type="radio" name="difficulty" value="medium"> საშუალო
+          </label>
+          <label>
+            <input type="radio" name="difficulty" value="hard"> რთული
+          </label>
+        </div>
+
+        <!-- ველის ტიპი 5: checkbox (ვეგანურია თუ არა) -->
+        <div>
+          <label>
+            <input type="checkbox" name="is-vegan" value="yes"> ვეგანურია
+          </label>
+        </div>
+
+        <!-- ველის ტიპი 6: textarea (ვალიდაციით: required, minlength="10") -->
+        <div>
+          <label for="recipe-instructions">მომზადების ინსტრუქცია:</label>
+          <textarea id="recipe-instructions" name="instructions" rows="5" minlength="10" required></textarea>
+        </div>
+
+        <button type="submit">შეთავაზება</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>✨ რეცეპტები მოწოდებულია TheMealDB API-დან — Web Engineering Final Project 2026</p>
+  </footer>
+
+</body>
+</html>

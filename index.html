@@ -3,62 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="რეცეპტების სამყარო — მოძებნე რეცეპტები, დაათვალიერე კატეგორიები და შეინახე ფავორიტები">
   <title>რეცეპტების სამყარო</title>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav" aria-label="მთავარი ნავიგაცია">
-      <a href="index.html" class="nav__logo">
-        <img src="assets/icons/logo.svg" alt="რეცეპტების სამყაროს ლოგო" class="nav__logo-img">
-        <span>რეცეპტების სამყარო</span>
-      </a>
 
-      <ul class="nav__links" role="list">
-        <li><a href="index.html" class="nav__link nav__link--active" aria-current="page">ძიება</a></li>
-        <li><a href="saved.html" class="nav__link">ფავორიტები <span id="saved-count-badge" class="nav__badge">0</span></a></li>
-        <li><a href="suggest.html" class="nav__link">რეცეპტის შეთავაზება</a></li>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">მთავარი</a></li>
+        <li><a href="saved.html">ფავორიტები</a></li>
+        <li><a href="detail.html">დეტალები</a></li>
+        <li><a href="suggest.html">შეთავაზება</a></li>
+        <li><a href="login.html">შესვლა</a></li>
       </ul>
-
-      <div class="nav__actions">
-        <span id="nav-user" class="nav__user"></span>
-        <button id="logout-btn" class="nav__logout" type="button">გასვლა</button>
-      </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <p class="hero__eyebrow">მსოფლიოს სამზარეულო</p>
-      <h1 id="hero-title" class="hero__title">იპოვე შენი საყვარელი რეცეპტი</h1>
-      <p class="hero__subtitle">მოძებნე კერძები სახელით, დაათვალიერე კატეგორიები და შეინახე საუკეთესო რეცეპტები ფავორიტებში.</p>
+    <section>
+      <h1>რეცეპტების სამყარო</h1>
+      <p>მოძებნეთ და აღმოაჩინეთ უგემრიელესი კერძების რეცეპტები მთელი მსოფლიოდან.</p>
+    </section>
 
-      <form id="search-form" class="search-form" novalidate>
-        <div class="search-form__row">
-          <label for="search-input" class="visually-hidden">რეცეპტის ძიება</label>
-          <input id="search-input" class="search-form__input" type="search" name="query" placeholder="მაგ. chicken, pasta, beef..." minlength="2" autocomplete="off" required>
-          <button class="search-form__btn" type="submit">ძიება</button>
+    <section>
+      <form>
+        <div>
+          <label for="search-input">ძიება:</label>
+          <input type="search" id="search-input" name="query" placeholder="ჩაწერეთ კერძის დასახელება..." required>
         </div>
-        <p id="search-error" class="form-feedback" role="alert" aria-live="polite"></p>
+
+        <div>
+          <label for="category-select">კატეგორია:</label>
+          <select id="category-select" name="category">
+            <option value="">ყველა კატეგორია</option>
+            <option value="beef">საქონლის ხორცი</option>
+            <option value="chicken">ქათმის ხორცი</option>
+            <option value="dessert">დესერტი</option>
+            <option value="pasta">პასტა</option>
+            <option value="vegetarian">ვეგეტარიანული</option>
+          </select>
+        </div>
+
+        <button type="submit">ძიება</button>
       </form>
-    </section>
-
-    <section class="category-section" aria-labelledby="category-title">
-      <h2 id="category-title" class="section-title">კატეგორიები</h2>
-      <div id="category-filter" class="category-filter" role="group" aria-label="კატეგორიების ფილტრი"></div>
-    </section>
-
-    <p id="loading-msg" class="state-msg" hidden>იტვირთება…</p>
-    <p id="error-msg" class="state-msg state-msg--error" hidden></p>
-
-    <section class="results-section" aria-labelledby="results-title">
-      <h2 id="results-title" class="section-title">რეცეპტები</h2>
-      <div id="results-grid" class="cards-grid" aria-live="polite"></div>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer>
     <p>✨ რეცეპტები მოწოდებულია TheMealDB API-დან — Web Engineering Final Project 2026</p>
   </footer>
+
 </body>
 </html>
