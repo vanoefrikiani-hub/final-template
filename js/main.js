@@ -1,4 +1,4 @@
-import { searchMeals, filterByCategory, fetchData, getSaved, setSaved } from './api.js';
+import { searchMeals, filterByCategory, fetchData, getSaved, setSaved, saveToFavorites } from './api.js';
 
 // თუ მომხმარებელი არ არის ავტორიზებული — გადამისამართება login.html-ზე
 if (!localStorage.getItem('user')) {
@@ -43,6 +43,9 @@ function renderResults(items) {
     return;
   }
 
+  // წავიკითხოთ მიმდინარე ფავორიტები
+  let currentSaved = getSaved();
+
   items.forEach(item => {
     // შევქმნათ ბარათის ძირითადი კონტეინერი
     const card = document.createElement('article');
@@ -69,16 +72,47 @@ function renderResults(items) {
     category.className = 'recipe-card-category';
     category.textContent = item.strCategory || '';
 
-    // დეტალების ღილაკი
+    // ღილაკების კონტეინერი (actions)
+    const actions = document.createElement('div');
+    actions.className = 'recipe-card-actions';
+
+    // დეტალების ღილაკი (a თეგი, რომელიც გადადის detail.html-ზე)
     const detailBtn = document.createElement('a');
     detailBtn.className = 'recipe-card-btn';
     detailBtn.textContent = 'დეტალურად';
     detailBtn.href = `detail.html?id=${item.idMeal}`;
 
+    // ფავორიტებში დამატების ღილაკი
+    const favBtn = document.createElement('button');
+    favBtn.className = 'recipe-card-btn';
+    
+    // შევამოწმოთ, ხომ არ არის უკვე დამატებული
+    const isAlreadySaved = currentSaved.some(saved => saved.id === item.idMeal);
+    if (isAlreadySaved) {
+      favBtn.textContent = 'შენახულია';
+      favBtn.disabled = true;
+    } else {
+      favBtn.textContent = 'შენახვა';
+    }
+
+    // კლიკზე რეცეპტის შენახვა
+    favBtn.addEventListener('click', () => {
+      const added = saveToFavorites(item);
+      if (added) {
+        favBtn.textContent = 'შენახულია';
+        favBtn.disabled = true;
+        // განვაახლოთ ლოკალური სია
+        currentSaved = getSaved();
+      }
+    });
+
     // აწყობა appendChild-ის გამოყენებით
+    actions.appendChild(detailBtn);
+    actions.appendChild(favBtn);
+
     cardBody.appendChild(title);
     cardBody.appendChild(category);
-    cardBody.appendChild(detailBtn);
+    cardBody.appendChild(actions);
 
     card.appendChild(img);
     card.appendChild(cardBody);

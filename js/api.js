@@ -50,3 +50,28 @@ export function getSaved() {
 export function setSaved(items) {
   localStorage.setItem('savedItems', JSON.stringify(items));
 }
+
+// რეცეპტის ფავორიტებში შენახვის დამხმარე ფუნქცია 
+export function saveToFavorites(meal) {
+  // 1. წამოვიღოთ უკვე არსებული ფავორიტები მეხსიერებიდან
+  const saved = getSaved();
+  
+  // 2. შევამოწმოთ, ხომ არ არის ეს კერძი უკვე დამატებული (id-ის მიხედვით)
+  const exists = saved.some(item => item.id === meal.idMeal);
+  
+  // 3. თუ არ არის დამატებული, შევქმნათ ახალი ობიექტი საჭირო მონაცემებით და დავამატოთ მასივში
+  if (!exists) {
+    saved.push({
+      id: meal.idMeal,
+      strMeal: meal.strMeal,
+      strMealThumb: meal.strMealThumb,
+      strCategory: meal.strCategory
+    });
+    
+    // 4. ჩავწეროთ განახლებული მასივი უკან localStorage-ში
+    setSaved(saved);
+    return true; // წარმატებით დაემატა
+  }
+  
+  return false; // უკვე არსებობს ფავორიტებში
+}

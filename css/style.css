@@ -365,7 +365,6 @@ button[type="submit"]:hover {
 }
 
 .recipe-card-btn {
-  margin-top: auto;
   background-color: transparent;
   color: var(--primary-color);
   border: 2px solid var(--primary-color);
@@ -376,6 +375,24 @@ button[type="submit"]:hover {
   text-align: center;
   text-decoration: none;
   transition: all 0.2s;
+}
+
+.recipe-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.recipe-card-actions .recipe-card-btn {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.recipe-card-actions .recipe-card-btn:disabled {
+  background-color: #edf2f7;
+  border-color: #cbd5e0;
+  color: #a0aec0;
+  cursor: not-allowed;
 }
 
 .recipe-card-btn:hover {
