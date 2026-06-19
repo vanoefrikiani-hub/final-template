@@ -58,6 +58,20 @@ if (suggestForm) {
     // ფორმის გასუფთავება
     suggestForm.reset();
   });
+
+  // დავამატოთ input ივენთი ველების შევსებისას შეცდომის შეტყობინების დასამალად (Event Type 3)
+  const inputs = [
+    document.getElementById('recipe-title'),
+    document.getElementById('author-email'),
+    document.getElementById('recipe-instructions')
+  ];
+  inputs.forEach(input => {
+    if (input) {
+      input.addEventListener('input', () => {
+        if (feedback) feedback.hidden = true;
+      });
+    }
+  });
 }
 
 function showFeedback(message, type) {
