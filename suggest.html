@@ -13,19 +13,18 @@
       <ul>
         <li><a href="index.html">მთავარი</a></li>
         <li><a href="saved.html">ფავორიტები</a></li>
-        <li><a href="detail.html">დეტალები</a></li>
         <li><a href="suggest.html">შეთავაზება</a></li>
-        <li><a href="login.html">შესვლა</a></li>
+        <li><a href="login.html">გასვლა</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section>
+    <section class="suggest-section">
       <h1>შესთავაზე ახალი რეცეპტი</h1>
       <p>გაგვიზიარეთ თქვენი საყვარელი კერძის რეცეპტი და ჩვენ მას განვიხილავთ.</p>
 
-      <form action="#" method="post">
+      <form id="suggest-form" class="suggest-form">
         <!-- ველის ტიპი 1: text (ვალიდაციით: required, minlength="3") -->
         <div>
           <label for="recipe-title">კერძის დასახელება:</label>
@@ -78,6 +77,7 @@
         </div>
 
         <button type="submit">შეთავაზება</button>
+        <p id="suggest-feedback" class="form-feedback" hidden></p>
       </form>
     </section>
   </main>
@@ -86,5 +86,6 @@
     <p>✨ რეცეპტები მოწოდებულია TheMealDB API-დან — Web Engineering Final Project 2026</p>
   </footer>
 
+  <script type="module" src="js/suggest.js"></script>
 </body>
 </html>

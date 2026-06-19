@@ -446,4 +446,21 @@ footer {
 
 @media (min-width: 1024px) {
   /* დესქტოპი */
+  body {
+    max-width: 1200px;
+    padding: calc(var(--spacing-unit) * 2);
+  }
+  
+  .hero-section {
+    padding: calc(var(--spacing-unit) * 4) var(--spacing-unit);
+  }
+  
+  .hero-title {
+    font-size: 3.2rem;
+  }
+  
+  .recipes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: calc(var(--spacing-unit) * 2);
+  }
 }

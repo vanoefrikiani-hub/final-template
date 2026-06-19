@@ -13,9 +13,8 @@
       <ul>
         <li><a href="index.html">მთავარი</a></li>
         <li><a href="saved.html">ფავორიტები</a></li>
-        <li><a href="detail.html">დეტალები</a></li>
         <li><a href="suggest.html">შეთავაზება</a></li>
-        <li><a href="login.html">შესვლა</a></li>
+        <li><a href="login.html">გასვლა</a></li>
       </ul>
     </nav>
   </header>
@@ -27,8 +26,9 @@
     </section>
 
     <!-- ადგილი, სადაც მომავალში დინამიურად გამოჩნდება შენახული რეცეპტები -->
-    <section>
-      <div id="saved-results-grid">
+    <section class="results-section">
+      <p id="saved-empty" class="no-results-state" hidden>ფავორიტი რეცეპტები ჯერ არ გაქვთ დამატებული.</p>
+      <div id="saved-results-grid" class="recipes-grid">
         <!-- შენახული რეცეპტების ბარათები ჩაიტვირთება აქ -->
       </div>
     </section>
@@ -38,5 +38,6 @@
     <p>✨ რეცეპტები მოწოდებულია TheMealDB API-დან — Web Engineering Final Project 2026</p>
   </footer>
 
+  <script type="module" src="js/saved.js"></script>
 </body>
 </html>
