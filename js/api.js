@@ -41,6 +41,20 @@ export async function filterByCategory(category) {
   }
 }
 
+export async function getMealDetails(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/lookup.php?i=${encodeURIComponent(id)}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`Error looking up meal with id "${id}":`, error);
+    throw error;
+  }
+}
+
 // localStorage-ის დამხმარე ფუნქციები — იმპორტი გააკეთე სადაც ჩანაწერები გჭირდება
 export function getSaved() {
   const raw = localStorage.getItem('savedItems');
