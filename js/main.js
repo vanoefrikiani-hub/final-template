@@ -1,4 +1,4 @@
-import { searchMeals, fetchData, getSaved, setSaved } from './api.js';
+import { searchMeals, filterByCategory, fetchData, getSaved, setSaved } from './api.js';
 
 // თუ მომხმარებელი არ არის ავტორიზებული — გადამისამართება login.html-ზე
 if (!localStorage.getItem('user')) {
@@ -94,24 +94,38 @@ if (searchForm) {
     const query = searchInput.value.trim();
     const selectedCategory = categorySelect ? categorySelect.value : '';
 
-    // ვალიდაცია
-    if (!query) {
-      showError('გთხოვთ შეიყვანოთ საძიებო სიტყვა!');
+    // ვალიდაცია: მინიმუმ ერთ-ერთი მაინც უნდა იყოს მითითებული
+    if (!query && !selectedCategory) {
+      showError('გთხოვთ შეიყვანოთ საძიებო სიტყვა ან აირჩიოთ კატეგორია!');
       return;
     }
 
     showLoading();
 
     try {
-      const data = await searchMeals(query);
-      let meals = data.meals || [];
+      let meals = [];
 
-      // თუ არჩეულია კატეგორია, გავფილტროთ მიღებული შედეგები კლიენტის მხარეს
-      if (selectedCategory) {
-        meals = meals.filter(meal => 
-          meal.strCategory && 
-          meal.strCategory.toLowerCase() === selectedCategory.toLowerCase()
-        );
+      if (query) {
+        // თუ ჩაწერილია საძიებო სიტყვა
+        const data = await searchMeals(query);
+        meals = data.meals || [];
+
+        // თუ კატეგორიაც არჩეულია, გავფილტროთ კლიენტის მხარეს
+        if (selectedCategory) {
+          meals = meals.filter(meal => 
+            meal.strCategory && 
+            meal.strCategory.toLowerCase() === selectedCategory.toLowerCase()
+          );
+        }
+      } else {
+        // თუ საძიებო სიტყვა ცარიელია, მაგრამ არჩეულია კატეგორია
+        const data = await filterByCategory(selectedCategory);
+        meals = data.meals || [];
+        
+        // რადგან filter.php არ აბრუნებს strCategory ველს, ხელით მივანიჭოთ საჩვენებლად
+        meals.forEach(meal => {
+          meal.strCategory = selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1);
+        });
       }
 
       renderResults(meals);

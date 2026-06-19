@@ -15,7 +15,7 @@
         <li><a href="saved.html">ფავორიტები</a></li>
         <li><a href="detail.html">დეტალები</a></li>
         <li><a href="suggest.html">შეთავაზება</a></li>
-        <li><a href="login.html">შესვლა</a></li>
+        <li><a href="login.html">გასვლა</a></li>
       </ul>
     </nav>
   </header>
@@ -28,24 +28,18 @@
 
     <section class="search-section">
       <form id="search-form" class="search-form-layout">
-        <div class="search-field-group">
-          <label for="search-input" class="search-label">ძიება:</label>
-          <input type="search" id="search-input" name="query" placeholder="ჩაწერეთ კერძის დასახელება..." required>
-        </div>
-
-        <div class="search-field-group">
-          <label for="category-select" class="search-label">კატეგორია:</label>
+        <div class="search-combined-group">
+          <input type="search" id="search-input" name="query" placeholder="Search meals (e.g. Chicken, Beef, Pasta)...">
           <select id="category-select" name="category">
-            <option value="">ყველა კატეგორია</option>
-            <option value="beef">საქონლის ხორცი</option>
-            <option value="chicken">ქათმის ხორცი</option>
-            <option value="dessert">დესერტი</option>
-            <option value="pasta">პასტა</option>
-            <option value="vegetarian">ვეგეტარიანული</option>
+            <option value="">All Categories</option>
+            <option value="Beef">Beef</option>
+            <option value="Chicken">Chicken</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Pasta">Pasta</option>
+            <option value="Vegetarian">Vegetarian</option>
           </select>
+          <button type="submit" class="search-btn">Search</button>
         </div>
-
-        <button type="submit" class="search-btn">ძიება</button>
       </form>
     </section>
 
